@@ -12,9 +12,17 @@ export const postNote = async (req, res) => {
   try {
     const body = await req.body;
     const params = await req.params.id;
-    return res
-      .status(200)
-      .json({ msg: "hola", "nos enviastes esto": [body, params] });
+    return res.status(200).json({
+      msg: "hola",
+      "you send us this": [
+        {
+          request: body,
+        },
+        {
+          params: params,
+        },
+      ],
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ msg: error });
